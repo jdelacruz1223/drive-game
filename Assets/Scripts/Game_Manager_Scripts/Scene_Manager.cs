@@ -1,0 +1,110 @@
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System;
+
+public class Scene_Manager : MonoBehaviour
+{
+
+    ///// Necessary references/variables \\\\\
+    // Keep track of the currently loaded scene.
+    public string currentScene = null;
+    // Loading scene to be used as intermediary.
+    public string loadingScene = "Loading_Scene";
+    // Menu scene first loaded.
+    public string menuScene = "Menu_Scene";
+    // Shows buttons that take player to selected level scene.
+    public string levelSelectionScene = "Level_Selection_Scene";
+    // FIXME (Need some levels created).
+    public string[] levels = { "Level_One_Scene", }; 
+
+
+    ///// Initialize Bootstrap \\\\\
+    private void Awake()
+    {
+        
+        DontDestroyOnLoad(gameObject);
+
+    }
+
+
+    ///// Functions \\\\\\
+    void Start()
+    {
+
+        StartCoroutine(ChangeScenes(menuScene));
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    // Function for when player presses 'Play' on Main Menu.
+    public void startPlay()
+    {
+
+        _change_scenes(levelSelectionScene);
+
+    }
+
+    // Function for when player returns to main menu.
+    public void returnMainMenu()
+    {
+
+        _change_scenes(menuScene);
+
+    }
+
+    // Load Level 1.
+    public void levelOne()
+    {
+
+        _change_scenes(levels[0]);
+
+    }
+
+
+    // Call this function when user presses button to 
+    // load a new level.
+    void _change_scenes(string selectedScene)
+    {
+
+        StartCoroutine(ChangeScenes(selectedScene));
+
+    }
+
+
+    // Coroutine for loading and unloading levels.
+    IEnumerator ChangeScenes(string selectedScene)
+    {
+
+        // Loads and sets loadingScene as active.
+        yield return SceneManager.LoadSceneAsync(loadingScene, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(loadingScene));
+
+        // Check to see if there is a current scene active needing removal.
+        // Implemented as a safeguard to reduce ambiguity of what scene will be unloaded.
+        if (!string.IsNullOrEmpty(currentScene))
+        {
+
+            yield return SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(currentScene));
+
+        }
+        
+        // Loads and sets selectedScene (target scene) as active.
+        yield return SceneManager.LoadSceneAsync(selectedScene, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(selectedScene));
+
+        // Unloads loadingScene.
+        yield return SceneManager.UnloadSceneAsync(loadingScene);
+
+        // Updates name of the currently active scene.
+        currentScene = selectedScene;
+
+    }
+
+}
