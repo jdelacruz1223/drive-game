@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Test_Prefab_Script : MonoBehaviour
+public class TestPrefab : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     // Reference scriptable object type.
-    public Test_Scriptable_Script prefabData;
+    public TestScriptable prefabData;
     void Start()
     {
         

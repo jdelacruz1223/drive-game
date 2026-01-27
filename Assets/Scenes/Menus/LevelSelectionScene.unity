@@ -203,8 +203,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1180599996}
-        m_TargetAssemblyTypeName: Canvas_UI_Script, Assembly-CSharp
-        m_MethodName: returnMainMenu
+        m_TargetAssemblyTypeName: CanvasUI, Assembly-CSharp
+        m_MethodName: ReturnMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -808,8 +808,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1180599996}
-        m_TargetAssemblyTypeName: Canvas_UI_Script, Assembly-CSharp
-        m_MethodName: levelOne
+        m_TargetAssemblyTypeName: CanvasUI, Assembly-CSharp
+        m_MethodName: LevelOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
