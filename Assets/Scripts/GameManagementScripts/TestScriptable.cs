@@ -7,8 +7,8 @@ using UnityEngine;
 
 // Second Theory: Dynamically create each level. Use premade scriptable_object to 
 
-[CreateAssetMenu(fileName = "Test_Scriptable_Script", menuName = "Scriptable Objects/Test_Scriptable_Script")]
-public class Test_Scriptable_Script : ScriptableObject
+[CreateAssetMenu(fileName = "TestScriptable", menuName = "Scriptable Objects/TestScriptable")]
+public class TestScriptable : ScriptableObject
 {
     // Array containing prefabs needed for each level.
     // Maybe split in the future?

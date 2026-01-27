@@ -791,8 +791,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1600414040}
-        m_TargetAssemblyTypeName: Canvas_UI_Script, Assembly-CSharp
-        m_MethodName: startPlay
+        m_TargetAssemblyTypeName: CanvasUI, Assembly-CSharp
+        m_MethodName: StartPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

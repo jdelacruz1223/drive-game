@@ -4,20 +4,20 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
 
-public class Scene_Manager : MonoBehaviour
+public class SceneManagement : MonoBehaviour
 {
 
     ///// Necessary references/variables \\\\\
     // Keep track of the currently loaded scene.
     public string currentScene = null;
     // Loading scene to be used as intermediary.
-    public string loadingScene = "Loading_Scene";
+    public string loadingScene = "LoadingScene";
     // Menu scene first loaded.
-    public string menuScene = "Menu_Scene";
+    public string menuScene = "MenuScene";
     // Shows buttons that take player to selected level scene.
-    public string levelSelectionScene = "Level_Selection_Scene";
+    public string levelSelectionScene = "LevelSelectionScene";
     // FIXME (Need some levels created).
-    public string[] levels = { "Level_One_Scene", }; 
+    public string[] levels = { "LevelOneScene", }; 
 
 
     ///// Initialize Bootstrap \\\\\
@@ -37,45 +37,20 @@ public class Scene_Manager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     // Function for when player presses 'Play' on Main Menu.
-    public void startPlay()
-    {
-
-        _change_scenes(levelSelectionScene);
-
-    }
+    public void StartPlay() => ChangeScenesHelper(levelSelectionScene);
 
     // Function for when player returns to main menu.
-    public void returnMainMenu()
-    {
-
-        _change_scenes(menuScene);
-
-    }
+    public void ReturnMainMenu() => ChangeScenesHelper(menuScene);
 
     // Load Level 1.
-    public void levelOne()
-    {
-
-        _change_scenes(levels[0]);
-
-    }
+    public void LevelOne() => ChangeScenesHelper(levels[0]);
 
 
     // Call this function when user presses button to 
     // load a new level.
-    void _change_scenes(string selectedScene)
-    {
-
-        StartCoroutine(ChangeScenes(selectedScene));
-
-    }
+    void ChangeScenesHelper(string selectedScene) => StartCoroutine(ChangeScenes(selectedScene));
 
 
     // Coroutine for loading and unloading levels.
