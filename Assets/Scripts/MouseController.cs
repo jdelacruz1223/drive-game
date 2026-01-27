@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MouseController : MonoBehaviour
@@ -36,6 +37,15 @@ public class MouseController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, mouseRaycastDistance, mask))
             {
+                hit.collider.TryGetComponent<IInteractable>(out var interactable);
+                try
+                {
+                    interactable.InteractAction();
+                }
+                catch
+                {
+                    Debug.Log("Object has no set Interact Action");
+                }
                 Debug.Log(hit.transform.name);
             }
         }
