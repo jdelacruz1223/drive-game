@@ -18,6 +18,9 @@ public class CanvasUI : MonoBehaviour
     // Function for when player presses 'Play' on Main Menu.
     public void StartPlay() => sceneManagement.StartPlay();
 
+    // Function for when player presses 'Quit' on Main Menu.
+    public void Quit() => sceneManagement.Quit();
+
     // Function for when player returns to main menu.
     public void ReturnMainMenu() => sceneManagement.ReturnMainMenu();
 
