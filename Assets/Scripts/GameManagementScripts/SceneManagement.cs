@@ -41,6 +41,22 @@ public class SceneManagement : MonoBehaviour
     // Function for when player presses 'Play' on Main Menu.
     public void StartPlay() => ChangeScenesHelper(levelSelectionScene);
 
+    // Function for when player presses 'Quit' on Main Menu.
+    public void Quit()
+    {
+
+        // Check if in editor or application to exit appropriately. 
+        // Preprocessor, so will not be included in final application.
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+
+        #else
+            Application.Quit();
+
+        #endif
+
+    }
+
     // Function for when player returns to main menu.
     public void ReturnMainMenu() => ChangeScenesHelper(menuScene);
 

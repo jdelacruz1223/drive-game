@@ -10,13 +10,13 @@ EditorBuildSettings:
     guid: 90594be2b2475d24e9a4c8ff1514948c
   - enabled: 1
     path: Assets/Scenes/Menus/MenuScene.unity
-    guid: 15dbf9641b6a7dc4f9ef24717351cd2c
+    guid: 5da3ec89db7354d479828111dc61f9c0
   - enabled: 1
     path: Assets/Scenes/Menus/LoadingScene.unity
     guid: 2bd526d81c7a046428a0692357fc7905
   - enabled: 1
     path: Assets/Scenes/Menus/LevelSelectionScene.unity
-    guid: 7af9836a244e3b9459998a705c5686fb
+    guid: 7600d45e4c6c42743b55244638362bad
   - enabled: 1
     path: Assets/Scenes/Levels/LevelOneScene.unity
     guid: 8b147641b4dc0f846b5b1d5d3af1b49a
