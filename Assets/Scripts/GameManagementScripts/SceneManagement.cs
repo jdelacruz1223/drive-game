@@ -12,12 +12,20 @@ public class SceneManagement : MonoBehaviour
     public string currentScene = null;
     // Loading scene to be used as intermediary.
     public string loadingScene = "LoadingScene";
+    // Pause menu scene.
+    public string pauseMenu = "PauseMenuScene";
+    // Bool to check if paused.
+    public bool isPaused = false;
+    // Events/Signals for letting those that need
+    // to know about pause state.
+    public static Action OnPaused;
+    public static Action OnResumed;
     // Menu scene first loaded.
     public string menuScene = "MenuScene";
     // Shows buttons that take player to selected level scene.
     public string levelSelectionScene = "LevelSelectionScene";
     // FIXME (Need some levels created).
-    public string[] levels = { "LevelOneScene", }; 
+    public string[] levels = { "LevelOneScene", };
 
 
     ///// Initialize Bootstrap \\\\\
@@ -58,7 +66,43 @@ public class SceneManagement : MonoBehaviour
     }
 
     // Function for when player returns to main menu.
-    public void ReturnMainMenu() => ChangeScenesHelper(menuScene);
+    public void ReturnMainMenu()
+    {
+
+        // Call Resume() if quitting from pause menu.
+        if (isPaused)
+        {
+
+            Resume();
+
+        }
+
+        ChangeScenesHelper(menuScene);
+
+    }
+
+    // Function for when player pauses.
+    public void Pause()
+    {
+
+        isPaused = true;
+        SceneManager.LoadScene("PauseMenuScene", LoadSceneMode.Additive);
+        Time.timeScale = 0;
+        OnPaused?.Invoke();
+
+    }
+
+    // Function for when player resumes.
+    public void Resume()
+    {
+
+        SceneManager.UnloadSceneAsync("PauseMenuScene");
+        Time.timeScale = 1;
+        OnResumed?.Invoke();
+        isPaused = false;
+
+    }
+
 
     // Load Level 1.
     public void LevelOne() => ChangeScenesHelper(levels[0]);

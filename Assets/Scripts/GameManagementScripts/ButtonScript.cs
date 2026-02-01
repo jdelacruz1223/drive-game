@@ -5,6 +5,7 @@ public class CanvasUI : MonoBehaviour
 
     // Refernce to the Scene_Manager script.
     private SceneManagement sceneManagement;
+    private PauseManagement pauseManagement;
 
     // At runtime, looks for the Scene_Manager.
     private void Awake()
@@ -12,6 +13,7 @@ public class CanvasUI : MonoBehaviour
 
         // Looks for first SceneManagement scene available.
         sceneManagement = (SceneManagement)FindFirstObjectByType(typeof(SceneManagement));
+        pauseManagement = (PauseManagement)FindFirstObjectByType(typeof(PauseManagement));
     
     }
 
@@ -24,7 +26,16 @@ public class CanvasUI : MonoBehaviour
     // Function for when player returns to main menu.
     public void ReturnMainMenu() => sceneManagement.ReturnMainMenu();
 
+    // Function for when player pauses.
+    public void Pause() => sceneManagement.Pause();
+
+    // Function for when player resums.
+    public void Resume() => sceneManagement.Resume();
+
     // Load Level 1.
     public void LevelOne() => sceneManagement.LevelOne();
 
+    
+
 }
+
